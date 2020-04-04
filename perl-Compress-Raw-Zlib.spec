@@ -1,7 +1,7 @@
 %{?scl:%scl_package perl-Compress-Raw-Zlib}
 
 # Run optional test
-%if ! (0%{?rhel}) || ! (0%{?scl:1})
+%if ! (0%{?rhel}) && ! (0%{?scl:1})
 %bcond_without perl_Compress_Raw_Zlib_enables_optional_test
 %else
 %bcond_with perl_Compress_Raw_Zlib_enables_optional_test
@@ -9,7 +9,7 @@
 
 Name:           %{?scl_prefix}perl-Compress-Raw-Zlib
 Version:        2.093
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Low-level interface to the zlib compression library
 # Zlib.xs:  (GPL+ or Artistic) and zlib
 # Others:   GPL+ or Artistic
@@ -101,6 +101,9 @@ find %{buildroot} -type f -name '*.bs' -empty -delete
 %{_mandir}/man3/Compress::Raw::Zlib.3*
 
 %changelog
+* Tue Jan 07 2020 Jitka Plesnikova <jplesnik@redhat.com> - 2.093-3
+- Re-rebuild of bootstrapped packages
+
 * Fri Dec 20 2019 Jitka Plesnikova <jplesnik@redhat.com> - 2.093-2
 - SCL
 
